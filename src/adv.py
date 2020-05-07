@@ -7,6 +7,12 @@ room = {
     'outside':  Room("Outside Cave Entrance",
                      "North of you, the cave mount beckons"),
 
+    'outside-west':  Room("West of Cave Entrance",
+                     "You're west of the cave entrance..."),
+
+    'outside-east':  Room("East of Cave Entrance",
+                     "You're east of the cave entrace..."),
+
     'foyer':    Room("Foyer", """Dim light filters in from the south. Dusty
 passages run north and east.""", ["rope", "coins"]),
 
@@ -26,6 +32,10 @@ earlier adventurers. The only exit is to the south."""),
 # Link rooms together
 
 room['outside'].n_to = room['foyer']
+room['outside'].w_to = room['outside-west']
+room['outside'].e_to = room['outside-east']
+room['outside-west'].e_to = room['outside']
+room['outside-east'].w_to = room['outside']
 room['foyer'].s_to = room['outside']
 room['foyer'].n_to = room['overlook']
 room['foyer'].e_to = room['narrow']
